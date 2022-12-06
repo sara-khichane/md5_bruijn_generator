@@ -19,7 +19,6 @@ def paire_to_chaine(paire):
         chaine += str(element)
     return chaine
 
-
 def set_aretes(k, n):
     sommets = set_sommets(k,n)
     aretes = []
@@ -37,6 +36,7 @@ def set_aretes(k, n):
     for element in k:
         aretes.append((element*(n-1)) + "----" + element + "--->"+ (element*(n-1)))
     return aretes
+
 
 def cycle_euler(k,n):
     sommets = set_aretes(k,n)
@@ -66,6 +66,19 @@ def get_bruijn(k,n, total_num):
             print (sequence)
     return
 
+def trouver_sol(k, n, password):
+    all = []
+    total_num = (math.factorial(len(k))**(len(k)**(n-1))//(len(k)**n))
+    while len(all) < total_num:
+        sequence = get_sequence(k, n)
+        #si on trouve le mot de passe dans la séquence
+        if password in sequence:
+            print ("Mot de passe trouvé dans la séquence : " + sequence)
+            return True
+        else:
+            if sequence not in all:
+                all.append(sequence)
+    return False
 
 def affichage(k, n, all):
     sommets = set_sommets(k,n)
@@ -81,6 +94,7 @@ def affichage(k, n, all):
     if all == True:
         print ("--> Toutes les séquences de de Bruijn possibles : ")
         get_bruijn(k,n, total_num)
+
 
 print ("\n=================== Générateur Suite de de Bruijn ======================\n")
 
@@ -111,3 +125,6 @@ print ("\n======================= Affichage des résultats =====================
 affichage(alphabet,n, all)
 
 print ("\n=========================== Fin des résultats ===========================\n")
+
+password = input ("Entrez le mot de passe à trouver : ")
+trouver_sol(alphabet,n, password)

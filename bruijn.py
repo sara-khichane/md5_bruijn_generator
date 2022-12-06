@@ -78,6 +78,7 @@ def trouver_sol(k, n, password):
         else:
             if sequence not in all:
                 all.append(sequence)
+    print ("Mot de passe non trouvé dans les séquences générées.")
     return False
 
 def affichage(k, n, all):
@@ -120,11 +121,13 @@ if rep == "o":
     if rep2 == "o":
         all = True
 
-print ("\n======================= Affichage des résultats =======================")
+rep = input ("Souhaitez-vous afficher les résultats (sommets, arêtes, cycle eulérien...) ? (o/n) : ")
+if rep == "o":
+    print ("\n======================= Affichage des résultats =======================")
 
-affichage(alphabet,n, all)
+    affichage(alphabet,n, all)
 
-print ("\n=========================== Fin des résultats ===========================\n")
+    print ("\n=========================== Fin des résultats ===========================\n")
 
 password = input ("Entrez le mot de passe à trouver : ")
 trouver_sol(alphabet,n, password)

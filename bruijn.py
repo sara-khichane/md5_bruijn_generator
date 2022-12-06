@@ -65,17 +65,3 @@ def get_bruijn(k,n, total_num):
             all.append(sequence)
             print (sequence)
     return
-
-def trouver_sol(k, n, password):
-    all = []
-    total_num = (math.factorial(len(k))**(len(k)**(n-1))//(len(k)**n))
-    while len(all) < total_num:
-        sequence = get_sequence(k, n)
-        #si on trouve le mot de passe dans la séquence
-        if password in sequence:
-            print ("Mot de passe trouvé dans la séquence : " + sequence)
-            return True
-        else:
-            if sequence not in all:
-                all.append(sequence)
-    return False

@@ -65,3 +65,33 @@ def get_bruijn(k,n, total_num):
             all.append(sequence)
             print (sequence)
     return
+
+print ("\n=================== Générateur Suite de de Bruijn ======================\n")
+
+n = input ("Entrez l'ordre n de la suite de de Bruijn : ")
+n = int(n)
+k = input ("Entrez le nombre d'éléments k de votre alphabet : ")
+k = int(k)
+#initialize the list with the size of k
+l = [0] * k
+for i in range(k):
+    e = input ("Entrez l'élément " + str(i+1) + " de votre alphabet : ")
+    #add each element to the list
+    l[i] = e
+
+#get the list of elements entered
+alphabet = l
+
+all = False
+
+rep = input ("Souhaitez-vous afficher toutes les suites de de Bruijn possibles ? (o/n) : ")
+if rep == "o":
+    rep2 = input ("Attention, cela peut prendre du temps !\nEtes-vous sûr de vouloir continuer ? (o/n) : ")
+    if rep2 == "o":
+        all = True
+
+print ("\n======================= Affichage des résultats =======================")
+
+affichage(alphabet,n, all)
+
+print ("\n=========================== Fin des résultats ===========================\n")

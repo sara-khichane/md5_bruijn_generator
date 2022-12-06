@@ -24,16 +24,16 @@ def set_aretes(k, n):
     sommets = set_sommets(k,n)
     aretes = []
     for x, y in itertools.combinations(sommets, 2):
-        node1_copy = x[1:]
-        node2_copy = y[:n-2]
-        label1 = y[n-2]
-        node1_copy2 = x[:n-2]
-        node2_copy2 = y[1:]
-        label2 = x[n-2]
-        if node1_copy == node2_copy:
-            aretes.append(paire_to_chaine(x)+ "----" + label1 + "--->" + paire_to_chaine(v2))
-        if node1_copy2 == node2_copy2:
-            aretes.append(paire_to_chaine(y)+ "----" + label2 + "--->" + paire_to_chaine(v1))
+        sommet1 = x[1:]
+        sommet2 = y[:n-2]
+        etiq1 = y[n-2]
+        sommet11 = x[:n-2]
+        sommet22 = y[1:]
+        etiq2 = x[n-2]
+        if sommet1 == sommet2:
+            aretes.append(paire_to_chaine(x)+ "----" + etiq1 + "--->" + paire_to_chaine(y))
+        if sommet11 == sommet22:
+            aretes.append(paire_to_chaine(y)+ "----" + etiq2 + "--->" + paire_to_chaine(x))
     for element in k:
         aretes.append((element*(n-1)) + "----" + element + "--->"+ (element*(n-1)))
     return aretes
@@ -65,6 +65,22 @@ def get_bruijn(k,n, total_num):
             all.append(sequence)
             print (sequence)
     return
+
+
+def affichage(k, n, all):
+    sommets = set_sommets(k,n)
+    aretes = set_aretes(k,n)
+    total_num = (math.factorial(len(k))**(len(k)**(n-1))//(len(k)**n))
+    print ("\n--> Vous avez l'alphabet suivant : " + str(k) + ", pour un ordre de " + str(n) + "\n")
+    print ("--> Le nombre de sommets : " + str(len(sommets)) + "\nListes des sommets (mots) : " + str(sommets)+ "\n")
+    print ("--> Le nombre d'arêtes : " + str(len(aretes)) + "\nListe des arêtes : " + str(aretes)+ "\n")
+    print ("--> Le cycle eulérien généré : " + str(cycle_euler(k,n))+ "\n")
+    print ("--> La séquence de Bruijn correspondante à ce cycle : " + str(get_sequence(k,n))+ "\n")
+    print ("--> Taille de la séquence de Bruijn : " + str(len(k)**n)+"\n")
+    print ("--> Nombre total des séquences de de Bruijn : " + str(total_num)+ "\n")
+    if all == True:
+        print ("--> Toutes les séquences de de Bruijn possibles : ")
+        get_bruijn(k,n, total_num)
 
 print ("\n=================== Générateur Suite de de Bruijn ======================\n")
 

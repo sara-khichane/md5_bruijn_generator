@@ -1,5 +1,5 @@
 # Le programme génére une séquence de de Bruijn d'ordre n et d'un alphabet de k éléments
-# Exécution avec la commande : python .\testbruijn.py
+# Exécution avec la commande : python .\bruijn.py
 # Suivez les instructions à l'écran
 
 import itertools
